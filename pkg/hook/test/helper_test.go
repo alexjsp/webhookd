@@ -16,17 +16,17 @@ func TestResolveScript(t *testing.T) {
 func TestNotResolveScript(t *testing.T) {
 	_, err := hook.ResolveScript("../../scripts", "foo", "sh")
 	assert.NotNil(t, err, "")
-	assert.Equal(t, "Script not found: ../../scripts/foo.sh", err.Error(), "")
+	assert.Equal(t, "script not found: ../../scripts/foo[.sh]", err.Error(), "")
 }
 
 func TestResolveBadScript(t *testing.T) {
 	_, err := hook.ResolveScript("../../scripts", "../tests/test_simple", "sh")
 	assert.NotNil(t, err, "")
-	assert.Equal(t, "Invalid script path: ../tests/test_simple.sh", err.Error(), "")
+	assert.Equal(t, "invalid script path: ../tests/test_simple", err.Error(), "")
 }
 
 func TestResolveScriptWithExtension(t *testing.T) {
 	_, err := hook.ResolveScript("../../scripts", "node.js", "sh")
 	assert.NotNil(t, err, "")
-	assert.Equal(t, "Script not found: ../../scripts/node.js", err.Error(), "")
+	assert.Equal(t, "script not found: ../../scripts/node.js", err.Error(), "")
 }
